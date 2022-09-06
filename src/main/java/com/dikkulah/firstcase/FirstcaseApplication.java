@@ -14,6 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @SpringBootApplication
 @Slf4j
@@ -40,6 +41,13 @@ public class FirstcaseApplication implements CommandLineRunner {
         ufuk.setEmail("dikkulah@gmail.com");
         log.info(userService.createUser(ufuk).toString());
 
+        User fatih = new User();
+        fatih.setName("fatih");
+        fatih.setLastName("Yılmaz");
+        fatih.setPhone("05536633774");
+        fatih.setEmail("fatih@gmail.com");
+        log.info(userService.createUser(fatih).toString());
+
         Product samsung = new Product();
         samsung.setName("Samsung");
         samsung.setPrice(BigDecimal.TEN);
@@ -58,8 +66,23 @@ public class FirstcaseApplication implements CommandLineRunner {
         apple.setExpirationDate(null);
         productService.addProduct(apple);
 
+
+        commentService.addComment(1L,1L,"yorum 1");
+
+
+
+
         log.info(productService.getExpiredProducts().toString());
 
         log.info(productService.getNonExpiredProducts().toString());
+
+        log.info(commentService.getCommentsOfUserByBetweenTwoDates(1L, LocalDateTime.of(2021,5,5,5,5),LocalDateTime.of(2025,5,5,10,10)).toString());
+
+        log.info(commentService.getCommentsOfProductByBetweenTwoDates(1L, LocalDateTime.of(2021,5,5,5,5),LocalDateTime.of(2023,5,5,5,5)).toString());
+
+        log.info(commentService.getCommentsOfUserByUserId(1L).toString());
+
+        log.info(commentService.getCommentsOfProductById(1L).toString());
+
     }
 }
