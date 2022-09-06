@@ -30,5 +30,13 @@ public class User {
     private List<Comment> comments= new ArrayList<>();
 
 
-
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "lastName = " + lastName + ", " +
+                "email = " + email + ", " +
+                "phone = " + phone + ")";
+    }
 }

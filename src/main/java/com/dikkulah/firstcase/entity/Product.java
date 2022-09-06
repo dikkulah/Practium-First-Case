@@ -23,6 +23,16 @@ public class Product {
     @Column(nullable = false)
     private BigDecimal price;
     private LocalDate expirationDate;
+
     @OneToMany(mappedBy = "product")
     private List<Comment> comments = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + name + ", " +
+                "price = " + price + ", " +
+                "expirationDate = " + expirationDate + ")\n";
+    }
 }

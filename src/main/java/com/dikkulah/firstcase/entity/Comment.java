@@ -2,6 +2,7 @@ package com.dikkulah.firstcase.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Table(name = "comments")
+
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,4 +28,12 @@ public class Comment {
     @JoinColumn(name = "product_id",nullable = false)
     private Product product;
 
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "name = " + commentText + ", " +
+                "price = " + commentDate + ", " +
+                "\n";
+    }
 }
