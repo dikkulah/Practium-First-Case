@@ -1,16 +1,26 @@
 package com.dikkulah.firstcase;
 
 
+import com.dikkulah.firstcase.service.CommentService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FirstcaseApplication {
-
-
-
+@Slf4j
+public class FirstcaseApplication implements CommandLineRunner {
+    @Autowired
+    CommentService commentService;
     public static void main(String[] args) {
         SpringApplication.run(FirstcaseApplication.class, args);
+
+
     }
 
+    @Override
+    public void run(String... args) throws Exception {
+    log.info(commentService.getAllComments().toString());
+    }
 }
